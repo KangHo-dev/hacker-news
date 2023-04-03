@@ -1,3 +1,4 @@
+const container = document.getElementById('root');
 const ajax = new XMLHttpRequest();
 const content = document.createElement('div');
 const NEWS_URL = 'https://api.hnpwa.com/v0/news/1.json';
@@ -19,7 +20,8 @@ window.addEventListener('hashchange', function() {
     const title = this.document.createElement('h1');
 
     title.innerHTML = newsContent.title;
-    console.log(newsContent);
+
+    content.appendChild(title);
 });
 
 for(let i = 0; i < 10; i++) {
@@ -33,5 +35,5 @@ for(let i = 0; i < 10; i++) {
     ul.appendChild(li);
 }
 
-document.getElementById('root').appendChild(ul);
-document.getElementById('root').appendChild(content);
+container.appendChild(ul);
+container.appendChild(content);
