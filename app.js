@@ -22,13 +22,18 @@ window.addEventListener('hashchange', function() {
     const newsContent = getData(CONTENT_URL.replace('@id', id));
     const title = this.document.createElement('h1');
 
-    title.innerHTML = newsContent.title;
+    container.innerHTML = `
+        <h1>${newsContent.title}</h1>
 
-    content.appendChild(title);
+        <div>
+            <a href="#">목록으로</a>
+        </div>
+    `;
 });
 
 for(let i = 0; i < 10; i++) {
     const div = document.createElement('div');
+    
 
     div.innerHTML = `
         <li>
