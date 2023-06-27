@@ -38,7 +38,7 @@ const store: Store = {
     feeds: [],
 };
 
-function getData(url: string) {
+function getData(url: string): NewsFeed[] | NewsDetail {
     ajax.open('GET', url, false);
     ajax.send();
 
