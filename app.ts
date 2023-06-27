@@ -38,7 +38,7 @@ const store: Store = {
     feeds: [],
 };
 
-function getData(url: string): NewsFeed[] | NewsDetail {
+function getData<AjaxResponse>(url: string): AjaxResponse {
     ajax.open('GET', url, false);
     ajax.send();
 
@@ -91,7 +91,7 @@ function newsFeed() {
         `;
 
     if (newsFeed.length === 0) {
-        newsFeed = store.feeds = makeFeeds(getData(NEWS_URL));
+        newsFeed = store.feeds = makeFeeds(getData<NewsFeed[]>(NEWS_URL));
     }
     
     for(let i = (store.currentPage -1) * pagingSize; i < store.currentPage * pagingSize; i++) {
@@ -128,7 +128,7 @@ function newsFeed() {
 
 function newsDetail() {
     const id = location.hash.substr(7);
-    const newsContent = getData(CONTENT_URL.replace('@id', id));
+    const newsContent = getData<NewsDetail>(CONTENT_URL.replace('@id', id));
     let template = `
         <div class="bg-gray-600 min-h-screen pb-8">
             <div class="bg-white text-xl">
