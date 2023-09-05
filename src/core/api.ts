@@ -1,4 +1,4 @@
-import { NewsFeed, NewsDetail }from '../types';
+import { NewsFeed, NewsDetail } from '../types';
 
 export class Api {
     ajax: XMLHttpRequest;
@@ -31,7 +31,7 @@ export class NewsDetailApi extends Api {
     constructor(url: string) {
         super(url);
     }
-    
+
     getData(id: string): NewsDetail {
         return this.getRequest<NewsDetail>();
     }
